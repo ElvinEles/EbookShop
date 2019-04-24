@@ -1,0 +1,34 @@
+{% extends "include/home.html.twig" %}
+
+{% block  content %}
+
+<section  id="aa-myaccount">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+       <div class="aa-myaccount-area">
+           <div class="row">
+             <div class="col-md-12">
+               <div class="aa-myaccount-register">
+                <h4>Şəxsi kabinet</h4>
+
+                <div class="col-md-6">
+                <ul class="list-group">
+                  <li class="list-group-item"><a href="{{ path('my_account_information')}}">Məlumatlarım</a></li>
+                  <li class="list-group-item"><a href="{{ path('forget_password')}}">Şifrəni dəyişməsi</a></li>
+                  <li class="list-group-item"><a href="#">Alış-veriş siyahım</a></li>
+                  <li class="list-group-item"><a href="#">Keçmiş sifarişlərim</a></li>
+                  <li class="list-group-item"><a href="#">Əməliyyatlarım</a></li>
+                </ul>
+                </div >
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

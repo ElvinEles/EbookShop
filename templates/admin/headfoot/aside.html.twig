@@ -1,0 +1,59 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="text-center">
+        <img style="width:100px;height:80px;" class="img-circle" src="{{ asset('admin/image/logo.jpg')}}"  alt="User Image" />
+      </div>
+
+    </div>
+
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li class="header"></li>
+      <li class="active treeview">
+        <a href="#">
+          <i class="fa fa-home"></i> <span>Əsas Səhifə</span>
+        </a>
+
+      </li>
+      <li class="deactive treeview">
+        <a href="#">
+          <i class="fa fa-stream"></i> <span>Kateqoriyalar</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="active"><a href="{{path('add_category')}}"><i class="fa fa-plus"></i></i> Yeni Kateqoriya</a></li>
+          <li><a href="{{path('all_category')}}"><i class="fa fa-list"></i> Kateqoriyalar</a></li>
+
+        </ul>
+      </li>
+
+      <li class="deactive treeview">
+        <a href="#">
+          <i class="fas fa-sliders-h"></i> <span>Slider</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="active"><a href="{{path('add_slider')}}"><i class="fa fa-plus"></i></i>Yeni Slider</a></li>
+          <li><a href="{{path('all_sliders')}}"><i class="fas fa-play"></i> Sliders</a></li>
+
+        </ul>
+      </li>
+
+      <li class="deactive treeview">
+        <a href="#">
+          <i class="fas fa-book"></i> <span> Kitablar</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="active"><a href="{{path('add_book')}}"><i class="fa fa-plus"></i></i>Yeni Kitab</a></li>
+          <li><a href="{{path('all_books_azeri')}}"><i class="fas fa-book-open"></i> Azəri Kitablar</a></li>
+          <li><a href="{{path('all_books_turkish')}}"><i class="fas fa-book-open"></i> Türk Kitablar</a></li>
+          <li><a href="{{path('all_books_english')}}"><i class="fas fa-book-open"></i> İngilis Kitablar</a></li>
+          <li><a href="{{path('all_books_russian')}}"><i class="fas fa-book-open"></i> Rus Kitablar</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

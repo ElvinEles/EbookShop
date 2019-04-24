@@ -1,0 +1,34 @@
+{% extends "admin/indexadmin.html.twig" %}
+
+{% block title %}Slider{% endblock %}
+{% block place %}Slider Düzəlişi{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+
+<form method="post" action="{{ path('edit_slider') }}" enctype="multipart/form-data" role="form">
+  <div class="box-body">
+  <div  class="col-md-12">
+
+  <div class="col-md-6">
+  <div  class="form-group">
+    <label style="margin-top:40px;" for="exampleInputEmail1">Slider adı:*</label>
+    <input required type="text" autocomplete="off" name="slider_name" value="{{slider.slider_name}}" class="form-control" id="exampleInputEmail1">
+    <input type="hidden" name="slider_id" value="{{slider.slider_id}}">
+  </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+        <label style="margin-top:40px;">Slider şəkili:*</label>
+      <input  type="file" autocomplete="off" name="slider_image"   class="form-control" id="exampleInputEmail1">
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary btn-block">Yenilə</button>
+  </div>
+  </div>
+  </div><!-- /.box-body -->
+</form>
+</div>
+{% endblock %}

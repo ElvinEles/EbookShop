@@ -1,0 +1,60 @@
+{% extends "admin/indexadmin.html.twig" %}
+
+{% block title %}Kateqoriyalar{% endblock %}
+{% block place %}Yeni Kateqoriya{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+
+{% if app.session.get('add_category_success') != null %}
+<div class="alert alert-success">
+{{app.session.get('add_category_success')}}
+</div>
+{{app.session.remove('add_category_success')}}
+{% endif %}
+
+{% if app.session.get('add_category_danger') != null %}
+<div class="alert alert-danger">
+{{app.session.get('add_category_danger')}}
+</div>
+{{app.session.remove('add_category_danger')}}
+{% endif %}
+
+{% if app.session.get('add_category_error') != null %}
+<div class="alert alert-warning">
+{{app.session.get('add_category_error')}}
+</div>
+{{app.session.remove('add_category_error')}}
+{% endif %}
+
+
+<form method="post" action="{{ path('save_category')}}" role="form">
+  <div class="box-body">
+  <div  class="col-md-12">
+
+  <div class="col-md-6">
+  <div  class="form-group">
+    <label style="margin-top:40px;" for="exampleInputEmail1">Kateqoriya adı:*</label>
+    <input required type="text" autocomplete="off" name="category_name" class="form-control" id="exampleInputEmail1">
+  </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+        <label style="margin-top:40px;">Menu adı:*</label>
+        <select class="form-control" name="menu_id">
+          <option value="0">---</option>
+          {% for menu in menus %}
+          <option value="{{ menu.getMenuId() }}">{{ menu.getMenuName() }}</option>
+           {% endfor %}
+        </select>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary btn-block">Təsdiqlə</button>
+  </div>
+  </div>
+  </div><!-- /.box-body -->
+</form>
+</div>
+{% endblock %}

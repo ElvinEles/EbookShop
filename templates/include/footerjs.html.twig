@@ -1,0 +1,219 @@
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('js/bootstrap.js')}}"></script>
+<!-- SmartMenus jQuery plugin -->
+<script type="text/javascript" src="{{ asset('js/jquery.smartmenus.js')}}"></script>
+<!-- SmartMenus jQuery Bootstrap Addon -->
+<script type="text/javascript" src="{{ asset('js/jquery.smartmenus.bootstrap.js')}}"></script>
+<!-- To Slider JS -->
+<script src="{{ asset('js/sequence.js')}}"></script>
+<script src="{{ asset('js/sequence-theme.modern-slide-in.js')}}"></script>
+<!-- Product view slider -->
+<script type="text/javascript" src="{{ asset('js/jquery.simpleGallery.js')}}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.simpleLens.js')}}"></script>
+<!-- slick slider -->
+<script type="text/javascript" src="{{ asset('js/slick.js')}}"></script>
+<!-- Price picker slider -->
+<script type="text/javascript" src="{{ asset('js/nouislider.js')}}"></script>
+<!-- Custom js -->
+<script src="{{ asset('js/custom.js')}}"></script>
+
+
+
+<script type="text/javascript">
+
+$('#user_name').focusout(function(){
+var user_name = $('#user_name').val();
+
+if (user_name ==null || user_name =="") {
+  $("#user_name_text").fadeIn(500);
+}
+});
+
+$('#user_second_name').focusout(function(){
+var user_second_name = $('#user_second_name').val();
+
+if (user_second_name ==null || user_second_name =="") {
+$("#user_second_name_text").fadeIn(500);
+}
+});
+
+
+$('#user_email').focusout(function(){
+  var user_email = $('#user_email').val();
+
+  if (user_email ==null || user_email =="") {
+   $("#user_email_text").fadeIn(500);
+  }
+
+});
+
+
+$('#user_address').focusout(function(){
+
+var user_address = $('#user_address').val();
+
+if (user_address ==null || user_address =="") {
+$("#user_address_text").fadeIn(500);
+}
+});
+
+
+$('#user_street').focusout(function(){
+
+var user_street = $('#user_street').val();
+
+if (user_street ==null || user_street =="") {
+$("#user_street_text").fadeIn(500);
+}
+});
+
+
+$('#user_post').focusout(function(){
+
+var user_post = $('#user_post').val();
+
+if (user_post ==null || user_post =="") {
+$("#user_post_text").fadeIn(500);
+}
+});
+
+
+$('#user_country').focusout(function(){
+
+var user_country = $('#user_country').val();
+
+if (user_country ==null || user_country =="") {
+$("#user_country_text").fadeIn(500);
+}
+});
+
+$('#user_security_password').focusout(function(){
+
+var user_security_password = $('#user_security_password').val();
+
+if (user_security_password ==null || user_security_password =="") {
+$("#user_security_password_text").fadeIn(500);
+}
+});
+
+$('#user_city').focusout(function(){
+
+var user_city = $('#user_city').val();
+
+if (user_city ==null || user_city =="") {
+$("#user_city_text").fadeIn(500);
+}
+});
+/*FADE OUT*/
+
+$('#user_name').change(function(){
+var user_name = $('#user_name').val();
+
+if (user_name !=null || user_name !="") {
+  $("#user_name_text").fadeOut(500);
+}
+});
+
+$('#user_second_name').change(function(){
+var user_second_name = $('#user_second_name').val();
+
+if (user_second_name !=null || user_second_name !="") {
+  $("#user_second_name_text").fadeOut(500);
+}
+});
+
+$('#user_email').change(function(){
+var user_email = $('#user_email').val();
+
+if (user_email !=null || user_email !="") {
+  $("#user_email_text").fadeOut(500);
+}
+});
+
+$('#user_address').change(function(){
+var user_address = $('#user_address').val();
+
+if (user_address !=null || user_address !="") {
+  $("#user_address_text").fadeOut(500);
+}
+});
+
+$('#user_street').change(function(){
+var user_street = $('#user_street').val();
+
+if (user_street !=null || user_street !="") {
+  $("#user_street_text").fadeOut(500);
+}
+});
+
+$('#user_post').change(function(){
+var user_post = $('#user_post').val();
+
+if (user_post !=null || user_post !="") {
+  $("#user_post_text").fadeOut(500);
+}
+});
+
+$('#user_country').change(function(){
+var user_country = $('#user_country').val();
+
+if (user_country !=null || user_country !="") {
+  $("#user_country_text").fadeOut(500);
+}
+});
+
+$('#user_city').change(function(){
+var user_city = $('#user_city').val();
+
+if (user_city !=null || user_city !="") {
+  $("#user_city_text").fadeOut(500);
+}
+});
+
+$('#user_security_password').change(function(){
+var user_security_password = $('#user_security_password').val();
+
+if (user_security_password !=null || user_security_password !="") {
+  $("#user_security_password_text").fadeOut(500);
+}
+});
+
+$('#user_password_one').change(function(){
+  var user_password_one=$('#user_password_one').val();
+
+  if (user_password_one.length < 6) {
+    $('#user_password_one_text').fadeIn(500);
+    $('#user_password_one_text').text("Parol min 6 xarakterdən ibarət olmamalıdır");
+  }else if (user_password_one ==null || user_password_one =="") {
+ $('#user_password_one_text').fadeOut(500);
+  }else{
+     $('#user_password_one_text').fadeOut(500);
+  }
+});
+
+
+$('#user_password').change(function(){
+
+  var user_password_one=$('#user_password_one').val();
+  var user_password=$('#user_password').val();
+
+
+    if (user_password_one != user_password) {
+     $('#user_password_text').fadeIn(500);
+     $('#user_password_text').text("Parol düzgün deyil");
+    }
+
+    if (user_password_one == user_password) {
+     $('#user_password_text').fadeOut(500);
+    }
+
+
+});
+
+
+
+
+</script>

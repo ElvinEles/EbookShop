@@ -1,0 +1,58 @@
+{% extends "include/home.html.twig" %}
+
+{% block  content %}
+
+    <section style="margin-top:20px;" id="aa-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="aa-product-area">
+                <div class="aa-product-inner">
+                  <!-- start prduct navigation -->
+
+                    <!-- Tab panes -->
+                    <div  class="tab-content">
+                      <!-- Start men product category -->
+                      <div  class="tab-pane fade in active" id="men">
+                        <ul class="aa-product-catg">
+
+                          {% for book in books %}
+                          <!-- start single product item -->
+                          <li>
+                            <figure style="background:white;" >
+                              <a class="aa-product-img" href="{{ path('product_show',{'book_id':book.book_id}) }}"><img  src="{{ asset(book.book_image)}}" alt="polo shirt img"></a>
+                                <figcaption>
+                                <h4 class="aa-product-title"><a href="{{ path('product_show',{'book_id':book.book_id}) }}">{{book.book_name}}</a></h4>
+                                <span class="aa-product-price">{{book.book_price}} AZN</span>
+                              </figcaption>
+                            </figure>
+                            <div class="aa-product-hvr-content">
+                              <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                            </div>
+                            <!-- product badge -->
+                            <span class="aa-badge aa-sale" style="background:red;" href="#">YENİ!</span>
+                          </li>
+                          {% endfor %}
+
+                        </ul>
+
+                      </div>
+                      <!-- / men product category -->
+
+
+
+                    </div>
+
+                    <!-- quick view modal -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

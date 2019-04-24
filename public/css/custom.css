@@ -1,0 +1,31 @@
+.registeralerttext{
+  font-size: 15px;
+  color: red;
+  float: right;
+
+}
+
+.overlay {
+  width: 560px;
+  margin-top: 5vh;
+  height: 500px;
+
+
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;        removed  */
+  align-items: center;
+  overflow: auto;               /*  scroll when overflowed  */
+}
+
+.overlay h2 {
+  margin-top: auto;             /*  push to the bottom  */
+}
+.overlay p {
+  margin-bottom: auto;          /*  push to the top  */
+}
+
+
+.textDesc{
+  color: LightSkyBlue;
+}

@@ -1,0 +1,184 @@
+{% extends "admin/indexadmin.html.twig" %}
+
+{% block title %}Slider{% endblock %}
+{% block place %}Bütün Slider{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+
+{% if app.session.get('add_book_success_edit') != null %}
+<div class="alert alert-success">
+{{app.session.remove('add_book_success_edit')}}
+</div>
+{% endif %}
+
+{% if app.session.get('add_book_danger_edit') != null %}
+<div class="alert alert-danger">
+{{app.session.remove('add_book_danger_edit')}}
+</div>
+{% endif %}
+
+{% if app.session.get('add_amount_price_success_edit') != null %}
+<div class="alert alert-warning">
+ {{app.session.remove('add_amount_price_success_edit')}}
+</div>
+{% endif %}
+
+{% if app.session.get('add_category_success_edit') != null %}
+<div class="alert alert-warning">
+ {{app.session.remove('add_category_success_edit')}}
+</div>
+{% endif %}
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title"></h3>
+        <div class="box-tools">
+        <form class="" action="{{ path('search_book') }}" method="post">
+          <div class="input-group">
+            <input type="text" name="book_name" autocomplete="off" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Kitabın adını yazın"/>
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tr >
+            <th class="text-center">ID</th>
+            <th class="text-center">Adı</th>
+            <th class="text-center">Kateqoriyası</th>
+            <th class="text-center">Miqdarı</th>
+            <th class="text-center">Şəkili</th>
+            <th class="text-center">Aktiv</th>
+            <th class="text-center">Yeni</th>
+            <th class="text-center">Action</th>
+          </tr>
+
+           {% for book in books %}
+          <tr>
+            <td class="col-md-1 text-center">{{ book.book_id }}</td>
+            <td class="col-md-2 text-left">{{ book.book_name }}</td>
+            <td class="col-md-2 text-center">{{ book.category_name }}</td>
+            <td class="col-md-2 text-center">{{ book.book_amount }}</td>
+            <td class="col-md-2 text-center"> <img style="width:60px;height:60px;" src="{{ asset(book.book_image)}}" alt=""></td>
+            <td class="col-md-1 text-center">
+            {% if book.book_active == 0 %}
+            <a href="{{ path('book_active',{'book_id':book.book_id})}}"><i style="color:red;" class="far fa-thumbs-down"></i></a>
+            {% elseif book.book_active == 1  %}
+            <a href="{{ path('book_deactive',{'book_id':book.book_id})}}"><i style="color:green;" class="far fa-thumbs-up"></i></a>
+            {% endif %}
+            </td>
+            <td class="col-md-1 text-center">
+            {% if book.book_new == 0 %}
+            <a href="{{ path('book_do_old',{'book_id':book.book_id})}}"><i data-toggle="tooltip" data-placement="top" title="Köhnə məhsul elə" style="color:red;" class="fas fa-arrow-down"></i></a>
+            {% elseif book.book_new == 1  %}
+            <a href="{{ path('book_do_new',{'book_id':book.book_id})}}"><i data-toggle="tooltip" data-placement="top" title="Yeni məhsul elə" style="color:green;" class="fas fa-arrow-up"></i></a>
+            {% endif %}
+            </td>
+            <td class="col-md-1 text-center">
+
+              <a href="" data-toggle="modal" data-id="{{ book.book_id }}" id="book_info" data-target="#bookModal"><i class="fas fa-eye"></i></a>
+
+              <a href="{{ path('book_edit',{'book_id':book.book_id})}}" style="margin-left:10px;"><i class="fas fa-pen"></i></a>
+              <a style="margin-left:10px;color:red;" data-id="{{ book.book_id }}"   data-toggle="modal" data-target="#deleteBookModal">
+               <i class="fas fa-trash"></i>
+              </a>
+             </td>
+          </tr>
+            {% endfor %}
+        </table>
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+  </div>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xəbərdarlıq</h5>
+
+      </div>
+        <form  action="{{ path('delete_book') }}" method="post">
+      <div class="modal-body">
+      Silmək istədiyinizdən əminsinizmi?
+      </div>
+
+     <input type="hidden" id="delete_book_id" name="delete_book_id">
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Xeyr</button>
+        <button type="submit" class="btn btn-danger">Bəli</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div  class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Kitab Haqqında</h5>
+
+      </div>
+      <div class="modal-body">
+
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Xüsusiyyətlər</th>
+        <th scope="col">Dəyərlər</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Kitab adı</th>
+        <td id="book_name"></td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab kateqoriya</th>
+        <td id="book_category"></td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab qiymət</th>
+        <td id="book_price"></td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab miqdar</th>
+        <td id="book_amount"></td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab müəllif</th>
+        <td id="book_author"></td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab şəkili</th>
+        <td> <img src="" style="width:80px;height:80px;" id="book_image" alt=""> </td>
+      </tr>
+      <tr>
+        <th scope="row">Kitab ətraflı</th>
+        <td>
+        <textarea id="book_about"  rows="7" cols="60"></textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

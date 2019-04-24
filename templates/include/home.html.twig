@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ include('include/header.html.twig') }}
+
+  <body>
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div>
+    <!-- / wpf loader Two -->
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- / header section -->
+{{ include('include/headsecond.html.twig') }}
+  <!-- / header section -->
+
+  <!-- menu -->
+{{ include('include/menu.html.twig') }}
+  <!-- / menu -->
+
+<!-- SLIDER -->
+{{ include('include/slider.html.twig') }}
+<!-- SLIDER -->
+
+{% block content %}{% endblock %}
+
+
+
+<!-- FOOTER -->
+{{ include('include/footer.html.twig') }}
+<!-- FOOTER -->
+
+<!-- Login Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Giriş</h4>
+        <form class="aa-login-form" method="post" action="{{ path('logincheck')}}">
+          <label for="">Email address<span>*</span></label>
+          <input type="text" name="user_email" placeholder="Email">
+          <label for="">Parol<span>*</span></label>
+          <input type="password" name="user_password" placeholder="Parol">
+          <button class="aa-browse-btn" type="submit">Daxil ol</button>
+          <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme" name="remmember_me"> Məni xatırla </label>
+          <p class="aa-lost-password"><a href="{{ path('forget_password') }}" >Parolu unutmusan?</a></p>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+  {{ include('include/footerjs.html.twig') }}
+
+
+</body>
+</html>

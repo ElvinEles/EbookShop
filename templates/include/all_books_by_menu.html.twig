@@ -1,0 +1,100 @@
+{% extends "include/home.html.twig" %}
+
+{% block  content %}
+<section class="content-header">
+
+  <ol class="breadcrumb">
+    <li><a href="#"> Əsas Səhifə </a></li>
+  <li class="active">{{category_name}}</li>
+
+  </ol>
+</section>
+
+<section class="content">
+<h1>{{category_name}}</h1>
+<div class="aa-product-details-bottom">
+  <ul class="nav nav-tabs" id="myTab2">
+    <li> <a href="#">Görünüş</a> </li>
+    <li><a href="#description"  data-toggle="tab">Siyahı</a></li>
+    <li><a href="#review"  data-toggle="tab">Cədvəl</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="description">
+      <span>
+         <table class="table">
+           <tbody>
+           {% for book in books %}
+             <tr>
+               <td class="col-md-2"><img style="width:80px;height:80px;"  src="{{ asset(book.book_image)}}" alt="polo shirt img"></td>
+               <td  class="col-md-5"> <span style="font-size:20px;"> <a style="color:LightSkyBlue;" href="{{ path('product_show',{'book_id':book.book_id}) }}">{{book.book_name}}</a> </span>  <br> {{ book.book_about|slice(0,50) }}</td>
+               <td class="col-md-3 text-center">{{book.book_price}} AZN</td>
+               <td class="col-md-2"> <a href="#" class="btn btn-primary">Səbət Əlavə et</a> </td>
+             </tr>
+           {% endfor %}
+           </tbody>
+         </table>
+      </span>
+
+   </div>
+    <div class="tab-pane fade " id="review">
+    <section id="aa-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="aa-product-area">
+                <div class="aa-product-inner">
+                  <!-- start prduct navigation -->
+
+                    <!-- Tab panes -->
+                    <div  class="tab-content">
+                      <!-- Start men product category -->
+                      <div  class="tab-pane fade in active" id="men">
+                        <ul class="aa-product-catg">
+
+                          {% for book in books %}
+                          <!-- start single product item -->
+                          <li>
+                            <figure style="background:white;" >
+                              <a class="aa-product-img" href="{{ path('product_show',{'book_id':book.book_id}) }}"><img  src="{{ asset(book.book_image)}}" alt="polo shirt img"></a>
+                                <figcaption>
+                                <h4 class="aa-product-title"><a href="{{ path('product_show',{'book_id':book.book_id}) }}">{{book.book_name}}</a></h4>
+                                <span class="aa-product-price">{{book.book_price}} AZN</span>
+                              </figcaption>
+                            </figure>
+                            <div class="aa-product-hvr-content">
+                              <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                            </div>
+                            <!-- product badge -->
+                            <span class="aa-badge aa-sale" style="background:red;" href="#">YENİ!</span>
+                          </li>
+                          {% endfor %}
+
+                        </ul>
+
+                      </div>
+                      <!-- / men product category -->
+
+
+
+                    </div>
+
+                    <!-- quick view modal -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+  </div>
+</div>
+
+</section>
+
+{% endblock %}

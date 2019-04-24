@@ -1,0 +1,72 @@
+<section id="menu">
+  <div class="container">
+    <div class="menu-area">
+      <!-- Navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <!-- Left nav -->
+          <ul class="nav navbar-nav">
+            <li><a href="{{ path('home')}}">Əsas Səhifə</a></li>
+
+            <li><a href="#">Azərbaycanca<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for category_azer in category_azers %}
+                <li><a href="{{ path('category_slice',{'category_id':category_azer.getId()})}}">{{category_azer.getCategoryName()}}</a></li>
+                 {% endfor %}
+              </ul>
+            </li>
+
+            <li><a href="#">Türk dilində<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+            {% for category_turkish in category_turkishs %}
+                <li><a href="{{ path('category_slice',{'category_id':category_turkish.getId()})}}">{{category_turkish.getCategoryName()}}</a></li>
+             {% endfor %}
+              </ul>
+            </li>
+            <li><a href="#">İngilis dilində <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+             {% for category_english in category_englishs %}
+                  <li><a href="{{ path('category_slice',{'category_id':category_english.getId()})}}">{{category_english.getCategoryName()}}</a></li>
+              {% endfor %}
+              </ul>
+            </li>
+
+           <li><a href="#">Rus dilində <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+             {% for category_russian in category_russians %}
+                <li><a href="{{ path('category_slice',{'category_id':category_russian.getId()})}}">{{category_russian.getCategoryName()}}</a></li>
+             {% endfor %}
+              </ul>
+            </li>
+
+            <li><a href="#">Bestseller <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for menus_best in menus_bests %}
+              <li><a href="{{ menus_best.menu_id}}">{{ menus_best.menu_name }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+
+            <li><a href="#">Məktəbli çantaları</a></li>
+
+            <li><a href="#">Digər<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% for category_other in category_others %}
+                  <li><a href="#">{{category_other.getCategoryName()}}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+</section>

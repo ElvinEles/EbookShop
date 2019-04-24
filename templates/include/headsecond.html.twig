@@ -1,0 +1,123 @@
+<header id="aa-header">
+  <!-- start header top  -->
+  <div class="aa-header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-header-top-area">
+            <!-- start header top left -->
+            <div class="aa-header-top-left">
+              <!-- start language -->
+
+              <!-- / language -->
+
+              <!-- start currency -->
+              <div class="aa-currency">
+                <div class="dropdown">
+                  <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-usd"></i>AZN
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><i class="fa fa-euro"></i>EURO</a></li>
+                    <li><a href="#"><i class="fa fa-usd"></i>USD</a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- / currency -->
+              <!-- start cellphone -->
+              <div class="cellphone hidden-xs">
+                <p><span class="fa fa-phone"></span>012 675 15 05</p>
+              </div>
+
+              <!-- / cellphone -->
+            </div>
+            <!-- / header top left -->
+            <div class="aa-header-top-right">
+              <ul class="aa-head-top-nav-right">
+                <li><a href="#" style="color:red;">
+                {% if app.session.get('user_information_enter') != null %}
+                {{app.session.remove('user_information_enter')}}
+                {{app.session.get('user_information_enter')}}
+                {% endif %}
+                </a></li>
+
+               {% if app.session.get('user_email') == null %}
+                <li><a href="{{ path('register') }}">Qeydiyyat</a></li>
+               {% else %}
+                <li><a href="{{ path('my_account') }}">Mənim hesabım</a></li>
+               {% endif %}
+
+                {% if app.session.get('user_email') != null %}
+                <li><a href="{{ path('logout') }}" >Çıxış</a></li>
+                {% else %}
+                <li><a href="" data-toggle="modal" data-target="#login-modal">Giriş</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / header top  -->
+
+  <!-- start header bottom  -->
+  <div class="aa-header-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-header-bottom-area">
+            <!-- logo  -->
+            <div class="aa-logo">
+              <!-- Text based logo -->
+              <a href="{{path('home')}}">
+                <span class="fa fa-shopping-cart"></span>
+                <p>Kitab<strong>Evim</strong> <span>Bİzdən alın</span></p>
+              </a>
+
+            </div>
+            <!-- / logo  -->
+             <!-- cart box -->
+
+            <div class="aa-cartbox">
+
+              <a class="aa-cart-link" href="#">
+                <span class="fa fa-shopping-basket"></span>
+                <span class="aa-cart-title">SƏBƏTİM</span>
+
+              </a>
+              <div class="aa-cartbox-summary">
+                <ul>
+                   {% for wishlist in wishlists %}
+                  <li>
+                    <a class="aa-cartbox-img" href="#"><img style="width:60px;height:60px;" src="{{ asset(wishlist.book_image)}}" alt="img"></a>
+                    <div class="aa-cartbox-info">
+                      <h4><a href="#">{{ wishlist.book_name }} AZN</a></h4>
+                      <p>{{ wishlist.book_price }}</p>
+                    </div>
+                    <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+              </div>
+
+            </div>
+
+            <!-- / cart box -->
+            <!-- search box -->
+            <div class="aa-search-box">
+              <form method="post" action="{{ path('search_book_home') }}">
+                <input type="text" name="book_name" id="" placeholder="Axtarın...">
+                <button type="submit"><span class="fa fa-search"></span></button>
+              </form>
+            </div>
+            <!-- / search box -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / header bottom  -->
+</header>

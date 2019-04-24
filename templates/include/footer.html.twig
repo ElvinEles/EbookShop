@@ -1,0 +1,58 @@
+
+<footer id="aa-footer">
+  <!-- footer bottom -->
+  <div class="aa-footer-top">
+   <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="aa-footer-top-area">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="aa-footer-widget">
+                <h3>Əsas Menu</h3>
+                <ul class="aa-footer-nav">
+                 {% for menu in menus %}
+                  <li><a href="">{{ menu.getMenuName() }}</a></li>
+                 {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 pull-right">
+              <div class="aa-footer-widget">
+                <div class="aa-footer-widget">
+                  <h3>Bizimlə Əlaqə</h3>
+                  <address>
+                    <p> Bakı şəh</p>
+                    <p><span class="fa fa-phone"></span>012 675 15 05</p>
+                    <p><span class="fa fa-envelope"></span>kitabhome@gmail.com</p>
+                  </address>
+                  <div class="aa-footer-social">
+                    <a href="#"><span class="fa fa-facebook"></span></a>
+                    <a href="#"><span class="fa fa-twitter"></span></a>
+                    <a href="#"><span class="fa fa-google-plus"></span></a>
+                    <a href="#"><span class="fa fa-youtube"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+  <!-- footer-bottom -->
+  <div class="aa-footer-bottom">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="aa-footer-bottom-area">
+          <p>Hazırladı:<a href="">Elvin Elesgerov</a></p>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>

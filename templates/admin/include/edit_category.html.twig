@@ -1,0 +1,41 @@
+{% extends "admin/indexadmin.html.twig" %}
+
+{% block title %}Kateqoriyalar{% endblock %}
+{% block place %}Kateqoriya Düzəlişi{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+
+
+<form method="post" action="{{ path('edit_category') }}" role="form">
+  <div class="box-body">
+  <div  class="col-md-12">
+
+  <div class="col-md-6">
+  <div  class="form-group">
+    <label style="margin-top:40px;" for="exampleInputEmail1">Kateqoriya adı:*</label>
+    <input required type="text" autocomplete="off" name="category_name" value="{{category.category_name}}" class="form-control" id="exampleInputEmail1">
+    <input type="hidden" name="category_id" value="{{category.id}}">
+  </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+        <label style="margin-top:40px;">Menu adı:*</label>
+        <select class="form-control" name="menu_id">
+          <option value="{{category.menu_id}}" selected>{{category.menu_name}}</option>
+
+          {% for menu in menus %}
+          <option value="{{ menu.getMenuId() }}">{{ menu.getMenuName() }}</option>
+           {% endfor %}
+        </select>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary btn-block">Yenilə</button>
+  </div>
+  </div>
+  </div><!-- /.box-body -->
+</form>
+</div>
+{% endblock %}

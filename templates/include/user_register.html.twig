@@ -1,0 +1,125 @@
+{% extends "include/home.html.twig" %}
+
+{% block  content %}
+
+<section  id="aa-myaccount">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+       <div class="aa-myaccount-area">
+           <div class="row">
+             <div class="col-md-12">
+               <div class="aa-myaccount-register">
+                <h4>Qeydiyyat <span class="registeralerttext">
+                                   {% if app.session.get('user_information') != null %}
+                                     {{app.session.remove('user_information')}}
+                                    {{app.session.get('user_information')}}
+                                    {% endif %}</span></h4>
+
+                <form  action="{{ path('saveuser')}}" method="post" class="aa-login-form">
+                <div class="col-md-6">
+
+                <div class="form-group">
+                 <label for="label">Ad<span>*</span></label> <span hidden class="registeralerttext fade-in"   id="user_name_text">"Boş olmamalıdır!"</span>
+                 <input type="text" autocomplete="off"  required class="form-control" id="user_name" name="user_name">
+                </div>
+
+                <div class="form-group">
+                 <label for="label">Soyad<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_second_name_text">"Boş olmamalıdır!"</span>
+                 <input type="text" id="user_second_name" autocomplete="off"  required class="form-control"  name="user_second_name">
+                </div>
+
+                <div class="form-group">
+                 <label for="label">Email<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_email_text">"Boş olmamalıdır!"</span>
+                 <input type="email" id="user_email" required   autocomplete="off" class="form-control" name="user_email">
+                </div>
+
+                <div class="form-group">
+                 <label for="label">Parol<span>*</span></label><span hidden class="registeralerttext"   id="user_password_one_text"></span>
+                 <input type="password" id="user_password_one" required autocomplete="off"   class="form-control" name="user_password">
+                </div>
+
+                <div class="form-group">
+                 <label for="label">Parol (təkrar)<span>*</span></label><span hidden class="registeralerttext"   id="user_password_text">"Parol düzgün deyil"</span>
+                 <input type="password" id="user_password"  required autocomplete="off" class="form-control" name="user_password_two">
+                </div>
+
+                </div>
+
+               <div class="col-md-6">
+               <div class="form-group">
+                <label for="label">Ünvan<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_address_text">"Boş olmamalıdır!"</span>
+                <input type="text" class="form-control" required autocomplete="off"  id="user_address" name="user_address">
+               </div>
+
+               <div class="form-group">
+                <label for="label">Küç<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_street_text">"Boş olmamalıdır!"</span>
+                <input type="text" class="form-control" required autocomplete="off"  id="user_street" name="user_street">
+               </div>
+
+               <div class="form-group">
+                <label for="label">Poçt<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_post_text">"Boş olmamalıdır!"</span>
+                <input type="text" class="form-control" required autocomplete="off" id="user_post" name="user_post">
+               </div>
+
+               <div class="form-group">
+                <label for="label">Ölkə<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_country_text">"Boş olmamalıdır!"</span>
+                <input type="text" class="form-control" required autocomplete="off" id="user_country" name="user_country">
+               </div>
+
+               <div class="form-group">
+                <label for="label">Şəhər<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_city_text">"Boş olmamalıdır!"</span>
+                <input type="text" class="form-control" required autocomplete="off" id="user_city" name="user_city">
+               </div>
+               </div>
+
+               <div class="col-md-12">
+               <div class="form-group">
+               <label for="label">Gizli söz<span>*</span></label><span hidden class="registeralerttext fade-in"   id="user_security_password_text">"Boş olmamalıdır!"</span>
+               <input type="text" class="form-control" required autocomplete="off" id="user_security_password" name="user_security_password">
+               </div>
+
+               <div class="pull-right">
+               <input type="checkbox"  name="user_security_information">
+              <a href="#" style="color:#0d47a1;" data-toggle="modal" data-target="#security-modal">Məxfilik</a> siyasəti'ni oxudum və qəbul edirəm
+               </div>
+
+               </div>
+
+               <div class="col-md-12">
+                 <button type="submit" class="aa-browse-btn btn-block">Təsdiqlə</button>
+               </div>
+
+                 </form>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Login Modal -->
+<div class="modal fade" id="security-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Məxfilik siyasəti</h4>
+        <div class = "overlay overlay-2">
+        <p>1. Məxfilik Siyasəti, İstifadəçi tərəfindən qeydiyyatdan keçərkən və ya kitabevim.az internet səhifəsindəki xidmətlərdən faydalanarkən təqdim etdiyi şəxsi məlumatların saxlanılması və qorunması ilə bağlı tərərflərin hüquq və vəzifələrini müəyyən edir.</p>
+        <p>2. Sizə məxsus şəxsi məlumatları bizimlə paylaşdığınıza, inamınıza görə minnətdarıq və sizi əmin edirik ki, bu məlumatlar yalnız sizə xidmət göstərmək və xidmət keyfiyyətinin artırılması məqsədi ilə toplanır!</p>
+        <p>3. İstifadəçi internet səhifəsindən istifadə etməklə bu məxfilik siyasətini qəbul etdiyini təsdiqləyir və öz üzərinə burada əksini tapan qayda və şərtlərə riayət etmək öhdəliyini götürür.</p>
+        <p>4. İdarəçi, kitabevim.az İnternet səhifəsində mövcüd olan və istifadəçilərdən müxtəlif məlumatlar tələb edən formlar, anketlər vasitəsilə İstifadəçi barədə əlaqə ( məs. ad, soyad, elektron poçt ünvanı, telefon nömrəsi və s. ) və demoqrafik məlumatları əldə edə bilər. Zəruri hallarda İstifadəçidən maliyyə xarakterli məlumatlar da alına bilər ( məs. kredit kartı nömrəsi ). Burada qeyd olunan məlumatlardan İstifadəçinin sifarişlərini almaq, ona mal və xidmətlər təklif etmək, İstifadəçi tərəfindən edilən ödənişləri həyata keçirmək, onun üzvlük hesabını idarə etmək, o cümlədən İstifadəçinn marağını cəlb edə biləcək mal və xidmətlər barədə ona məlumat vermək məqsədilə istifadə edilir.</p>
+        <p>5. İstifadəçi , internet səhifəsində qeydiyyata alındıqdan sonra, əksini tələb etmədiyi müddətcə, onun elektron poçt ünvanına mütəmadi olaraq saytda olan yeniliklər, yeni kampaniyalar barədə məlumatlar göndəriləcəkdir. Bu cür məlumatların gəlişini istəməyən İstifadəçi İdarəçidən məlumatların gəlişinin dayandırılmasını tələb edə bilər.</p>
+       <p>6. Zəruri hallarda İdarəçi, İstifadəçi ilə əlaqə saxlamaq məqsədilə ona məxsus əlaqə məlumatlarından istifadə edə bilər. İstifadəçiyə məxsus bu cür məlumatların İdarəçi tərəfindən 3-cü şəxslərə verilməsi qadağandır. İdarəçinin mülkiyyət formasının dəyişməsi və ya yenidən təşkili halında İstifadəçiyə məxsus məlumatlar hüquqi varisə keçəcəkdir.</p>
+       </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+{% endblock %}

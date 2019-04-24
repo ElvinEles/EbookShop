@@ -1,0 +1,10 @@
+ {% extends "include/home.html.twig" %}
+
+ {% block  content %}
+  <!-- Products section -->
+{{ include('include/product_new.html.twig') }}
+{{ include('include/product_russian_select.html.twig') }}
+{{ include('include/product_turkish_select.html.twig') }}
+
+  <!-- / Products section -->
+{% endblock %}

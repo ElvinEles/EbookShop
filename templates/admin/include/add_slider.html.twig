@@ -1,0 +1,40 @@
+{% extends "admin/indexadmin.html.twig" %}
+
+{% block title %}Slider{% endblock %}
+{% block place %}Yeni Slider{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+
+{% if app.session.get('add_slider_success') != null %}
+<div class="alert alert-success">
+{{app.session.get('add_slider_success')}}
+</div>
+{{app.session.remove('add_slider_success')}}
+{% endif %}
+
+<form method="post" action="{{ path('save_slider')}}" enctype="multipart/form-data" role="form">
+  <div class="box-body">
+  <div  class="col-md-12">
+
+  <div class="col-md-6">
+  <div  class="form-group">
+    <label style="margin-top:40px;" for="exampleInputEmail1">Slider adı:*</label>
+    <input required type="text" autocomplete="off" name="slider_name" class="form-control" id="exampleInputEmail1">
+  </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+        <label style="margin-top:40px;">Slider şəkili:*</label>
+      <input required type="file" autocomplete="off" name="slider_image" class="form-control" id="exampleInputEmail1">
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary btn-block">Təsdiqlə</button>
+  </div>
+  </div>
+  </div><!-- /.box-body -->
+</form>
+</div>
+{% endblock %}
